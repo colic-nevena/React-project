@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navlink from './navlink';
 import DropDown from './dropdown';
+import { showCourses } from '../../store/actions';
 
 class Navbar extends Component {
  
@@ -19,7 +20,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item"><Navlink to='/'>Početna</Navlink></li>             
              
-              <li className="nav-item"><Navlink to='/'>Kursevi</Navlink></li>                    
+              <li className="nav-item"><Navlink to='/kursevi'>Kursevi</Navlink></li>                    
             </ul>
             
             
