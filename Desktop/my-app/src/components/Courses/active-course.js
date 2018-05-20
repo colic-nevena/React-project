@@ -7,13 +7,14 @@ class CourseDetails extends Component {
     
     render() {
         if(!this.props.course){
-            return <div>Izaberite kurs</div>
+            return <div>Klik na kurs za više informacija</div>
         }
         
         return (
             <div>
                 <h3>{this.props.course.naziv}</h3>
                 <div>{this.props.course.rating}</div>
+                <div>{this.props.course.mesta_na_kursu}</div>
             </div>
         )
        

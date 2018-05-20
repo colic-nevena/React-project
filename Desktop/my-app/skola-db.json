@@ -130,7 +130,7 @@
     ],
     "predmeti": [{
             "id": 1,
-            "ime": "Matiš",
+            "ime": "Matematika",
             "rating": 5,
             "mesta_na_kursu": 2,
             "science": true,

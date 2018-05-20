@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {selectCourse, showCourses} from "../../store/actions";
+import './kursevi.stil.css';
 
 
 class CourseList extends Component {
    
-    
+    componentDidMount() {
+        this.props.prikazi();
+    }
+      
     render() {
-        return (
-           
-            <ul>                                
-                { this.renderCourses() }
-            </ul>
-        
+        return (                 
+             this.renderCourses()
         )
         
     }
@@ -22,19 +22,20 @@ class CourseList extends Component {
     renderCourses() {
         
         if(!this.props.courses) {
-            console.log("uso u no props");
+         
             return <li>Škola trenutno ne radi.</li>
         }
         
        
         return this.props.courses.map(course => {
             return (
-                <li key= {course.id}>{course.ime}
-                <span onClick= {()=> {
-                    console.log("usao u map props");
-                    this.props.selektuj(course)}}> {course.naziv}</span>
-                
-                </li>
+               
+                <div key={course.id} className="divKurs">  
+                <span onClick= {()=> {                    
+                    this.props.selektuj(course)}}> 
+                    {course.ime}</span>
+                </div>
+              
             )
         })
     }
@@ -48,8 +49,8 @@ function mapStateToProps(state) {
     
    function mapDispatchToProps(dispatch) {
         return bindActionCreators ({
-        selektuj: selectCourse,    
-        prikazi: showCourses        
+        selektuj: selectCourse,
+        prikazi: showCourses 
         },dispatch)
     }
       

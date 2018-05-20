@@ -1,7 +1,11 @@
-function activeCourseReducer(state={}, action) {
+import { selectCourse } from "../actions";
+
+function activeCourseReducer(state=null, action) {
     switch(action.type) {        
-        case 'FETCH_SELECTED_DONE':
-         return action.result;
+        case 'FETCH_SELECTED_DONE':{
+            console.log("usao u activeCourseReducer i fetch selected done");
+            return action.result;
+           }      
          default:
           return state;
     }

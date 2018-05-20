@@ -1,0 +1,24 @@
+.divKurs {
+    width:200px;
+    height: 100px;
+    font-weight: bold;
+    font-size: 20px;  
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px; 
+    border:2px solid black;
+    float:left;
+    background-color:#669999;
+    margin:5% 2% 0 5%;
+  }
+  
+  
+#naslov {
+    display: block;
+    margin:0 20%;
+}
+
+.kContainer {
+    background-color: #A9C7C7;
+    height: 550px;
+}
