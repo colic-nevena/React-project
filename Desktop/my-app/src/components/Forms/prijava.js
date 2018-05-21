@@ -28,10 +28,10 @@ class FormPrijava extends Component {
             <label><b>Email adresa</b></label>
             <input type="password" placeholder="Unesite Vašu email adresu" name="email" required/>
     
-            <label  className="desno"><strong>Kurs:</strong></label>
+            <label className="desno"><strong>Kurs:</strong></label>
             <SelectCourse></SelectCourse>
             <hr/>
-            <button type="button" class="btn btn-primary prijavibtn">Upiši me</button>
+            <button type="button" className="btn btn-primary prijavibtn">Upiši me</button>
     
            </div>
 

@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { showCourses } from '../../store/actions';
+import { showCourses, brisiStudenta } from '../../store/actions';
 import './prijava.stil.css';
 
 class FormIspis extends Component {
     
-    constructor(props) {
-        super(props);        
-    }
-    
+    constructor(props){
+        super(props);
+        this.state ={
+            mejl: "nema mejl"
+        }
+      
+    }   
+ 
+    handleChange(event) {
+        console.log("U event sam: "+ event.target.value)
+        this.setState({mejl: event.target.value});
+        
+      }
+      
+      
     render() {
         return (
             <form>
@@ -18,17 +29,17 @@ class FormIspis extends Component {
             </div>
    
             <div className="container1">
-             <label><b>Ime</b></label>
-             <input type="text" placeholder="Unesite Vaše ime" name="uname" required/>
+             <label><strong>Ime</strong></label>
+             <input type="text" placeholder="Unesite Vaše ime" name="uname" ref='_imeTxt' required/>
 
-            <label><b>Prezime</b></label>
-            <input type="password" placeholder="Unesite Vaše prezime" name="usurname" required/>
+            <label><strong>Prezime</strong></label>
+            <input type="text" placeholder="Unesite Vaše prezime" name="usurname" ref='_prezTxt' required/>
     
-            <label><b>Email adresa</b></label>
-            <input type="password" placeholder="Unesite Vašu email adresu" name="email" required/>  
+            <label><strong>Email adresa</strong></label>
+            <input type="text"   onChange={this.handleChange.bind(this)} placeholder="Unesite Vašu email adresu" name="email" ref='_mejlTxt'  required/>  
     
 
-            <button type="button" class="btn btn-danger prijavibtn">Ispiši me</button>
+            <button type="button" className="btn btn-danger prijavibtn" onClick={()=>this.props.brisi(this.state.mejl)}>Ispiši me</button>
     
            </div>
 
@@ -37,5 +48,13 @@ class FormIspis extends Component {
     )}
 
 }
+ 
 
-export default FormIspis;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators ({
+    brisi: brisiStudenta    
+    }, dispatch)
+}
+  
+
+export default connect(null, mapDispatchToProps)(FormIspis)

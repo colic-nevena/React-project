@@ -13,7 +13,6 @@ class SelectCourse extends Component {
        
     }
 
-
     render() {
         
         let courses = this.props.prikazi();
@@ -24,16 +23,16 @@ class SelectCourse extends Component {
                     <option value="null" disabled selected>Kursevi</option>
                     
                     {this.props.courses.map((course, index) => {
-                    return <option key={index} value = {course.ime}>{course.ime}</option>
+                    return <option key={index} value ={course.ime}>
+                    {course.ime}
+                    </option>
                     })}
                     
                 </select>        
             </div>
-            )
-
-    }
-   
+            )}
 }
+
 
 function mapStateToProps(state) {
     return {

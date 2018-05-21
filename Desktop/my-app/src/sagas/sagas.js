@@ -1,9 +1,9 @@
 import {takeEvery, takeLatest} from 'redux-saga';
 import {fork,call,put, all} from 'redux-saga/effects';
 import request from 'superagent';
-import {FETCH_COURSES, FETCH_SELECTED} from '../store/actions'
-import {getCourses} from '../services/db-school.service';
-import {getSelected} from '../services/db-school.service';
+import {FETCH_COURSES, FETCH_SELECTED, FETCH_DELETE} from '../store/actions'
+import {getCourses, getSelected, deleteStudent, getStudentByEmail} from '../services/db-school.service';
+
 
 function* callgetCourses ({resolve,reject}) {  
     let result = yield call(getCourses, null);
@@ -22,6 +22,22 @@ function* getCoursesSaga() {
 }
 
 
+
+////////////////
+
+
+function* callgetDelete({payload}) {  
+    console.log("usao u callgetDelete, sad ce fetch done: " + payload);  
+    let result = yield call(getStudentByEmail, payload);
+    let finalResult = yield call(deleteStudent, result[0].id); 
+}   
+
+
+
+function* getDeleteSaga() { 
+    console.log("usao u getDelete saga, ceka fetch delete");  
+    yield* takeEvery(FETCH_DELETE, callgetDelete);
+}
 
 ////////////////////
 /*function* callgetSelected ({id,resolve,reject}) {
@@ -46,6 +62,7 @@ function* getSelectedSaga() {
 export default function* root() {
     yield all([
         fork(getCoursesSaga),
+        fork(getDeleteSaga)
         //fork(getSelectedSaga)
     ])
 }

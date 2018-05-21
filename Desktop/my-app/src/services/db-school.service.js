@@ -13,6 +13,13 @@ export function getCourses() {
 
 
 
+export function getStudentByEmail(email) {
+    return fetch(`http://localhost:3000/prijavljeni/?email=${email}`)
+                .then( response => response.json());
+}
+
+
+
 
 export function getSelected(id) {
     return fetch(`http://localhost:3000/predmeti/${id}`)
@@ -23,11 +30,10 @@ export function getSelected(id) {
 
 
 export function deleteStudent(id) {
-    return fetch(`http://localhost:3000/predmeti/${id}`,{
+    return fetch(`http://localhost:3000/prijavljeni/${id}`,{
         method:"DELETE"
-    }).then(response => response.json())
-    .then(res => console.log("Resolve: " + res))
-    .catch(err => console.log("Error: " + err));    
+    }).then(response => response.json());
+     
 }
 
 

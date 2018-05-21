@@ -3,6 +3,7 @@ import activecourse from "../../components/Courses/active-course"
 
 export const FETCH_COURSES = 'FETCH_COURSES';
 export const FETCH_SELECTED = 'FETCH_SELECTED';
+export const FETCH_DELETE = 'FETCH_DELETE';
 
 
 export function showCourses(dispatch) {
@@ -21,3 +22,10 @@ export  function selectCourse(id) {
     }  
 }
 
+export function brisiStudenta(mejl) {
+    console.log("usao u brisanje, sad ce da zove fetch delete akciju i mail je: " + mejl);    
+    return {
+        type: FETCH_DELETE,     
+        payload: mejl
+    }  
+}
