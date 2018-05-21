@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showCourses } from '../../store/actions';
+import SelectCourse from './selekt';
 import './prijava.stil.css';
 
 class FormPrijava extends Component {
@@ -27,8 +28,9 @@ class FormPrijava extends Component {
             <label><b>Email adresa</b></label>
             <input type="password" placeholder="Unesite Vašu email adresu" name="email" required/>
     
-    
-
+            <label  className="desno"><strong>Kurs:</strong></label>
+            <SelectCourse></SelectCourse>
+            <hr/>
             <button type="button" class="btn btn-primary prijavibtn">Upiši me</button>
     
            </div>

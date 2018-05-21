@@ -39,6 +39,7 @@ class CourseList extends Component {
                     this.props.selektuj(course.id)}}> 
                     {course.ime}</span>
                     <p className="txt-stil">rating: {course.rating}</p>
+                    <p className="txt-stil">slobodnih mesta: {course.mesta_na_kursu}</p>
                 </div>
               
             )
