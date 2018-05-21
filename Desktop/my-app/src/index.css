@@ -7,3 +7,9 @@ html, body
     font-family: Verdana, Geneva, Tahoma, sans-serif;
  
 }
+
+.stilStranica {
+    width:80%;
+    margin: auto;
+    display: block;
+  }

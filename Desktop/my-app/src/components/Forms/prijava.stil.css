@@ -1,0 +1,51 @@
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 5px 20px;
+    margin: 0px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+
+.container1 {
+    padding: 16px;
+    position:relative;
+    width:35%;
+    margin:auto;
+    display:block;
+    border:1px solid black;
+    border-radius: 2%;
+    
+  }
+  
+  .prijavibtn{
+  
+    display:block;
+    margin:auto;
+  }
+  
+.container4 {  
+    margin:0 36%;
+    width:40%;   
+  }
+    
+  .stilNaslov {
+    display: block;
+    margin: auto;  
+    padding-bottom: 10%;
+    
+  }
+  
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .prijavibtn {
+       width: 80%;
+    }
+  }
+  

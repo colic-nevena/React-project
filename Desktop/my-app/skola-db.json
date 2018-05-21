@@ -340,13 +340,15 @@
             "id": 1,
             "ime": "Nevena",
             "prezime": "Čolić",
-            "kurs": "Engleski"
+            "kurs": "Engleski",
+            "email":"mrsnevenac@gmail.com"
         },
         {
             "id": 2,
             "ime": "Majda",
             "prezime": "Čolić",
-            "kurs": "Hemija"
+            "kurs": "Hemija",
+            "email":"majda1506@gmail.com"
         }
     ]
 }

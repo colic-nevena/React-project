@@ -17,9 +17,8 @@ class DropDown extends Component {
              Zakazivanje
              </a>
            <div className="dropdown-menu">
-           <Navlink to='/'><span style= {stilSlova}>Prijavi se za čas</span></Navlink>
-           <Navlink to='/'><span style= {stilSlova}>Otkaži čas</span></Navlink>
-           <Navlink to='/'><span style= {stilSlova}>Izmeni rezervisani čas</span></Navlink>
+           <Navlink to='/prijava'><span style= {stilSlova}>Prijavi se na kurs</span></Navlink>
+           <Navlink to='/ispis'><span style= {stilSlova}>Otkaži članstvo</span></Navlink>          
            </div>
         </li>
         </ul>

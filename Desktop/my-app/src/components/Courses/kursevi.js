@@ -12,6 +12,7 @@ class Kursevi extends Component {
             
             <CourseList></CourseList>
             <CourseDetails></CourseDetails>
+            
             </div>
             
             

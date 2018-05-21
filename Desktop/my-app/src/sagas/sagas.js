@@ -1,58 +1,36 @@
 import {takeEvery, takeLatest} from 'redux-saga';
-import {fork,call,put} from 'redux-saga/effects';
+import {fork,call,put, all} from 'redux-saga/effects';
 import request from 'superagent';
 import {FETCH_COURSES, FETCH_SELECTED} from '../store/actions'
+import {getCourses} from '../services/db-school.service';
+import {getSelected} from '../services/db-school.service';
 
-function getCourses() {
-    //console.log("usao u get courses, ovde zove api");
-    const url = "http://localhost:3000/predmeti/";
-    return request
-           .get(url)
-           .then((data)=>{
-               return JSON.parse(data.text);
-           })
-}
-
-function* callgetCourses ({resolve,reject}) {
-   // console.log("usao u callget courses, ovde je fetch_courses_done");
-    let result = yield call(getCourses);
-    //console.log(result);
-    
+function* callgetCourses ({resolve,reject}) {  
+    let result = yield call(getCourses, null);
+      
     if(result) {
         yield put({type:'FETCH_COURSES_DONE',result});
-        yield call(resolve);
+        yield call(resolve,null);
     }
     else {
-        yield call(reject,'No courses at the moment');
+        yield call(reject,null);
     }    
-}
+}   
 
-function* getCoursesSaga() {
-    //console.log("usao u get courses saga, ona ceka fetch_courses akciju");
+function* getCoursesSaga() {   
     yield* takeEvery(FETCH_COURSES, callgetCourses);
 }
 
 
 
 ////////////////////
-
-function getSelected() {
-    console.log("usao u get selected, ovde zove api");
-    const url = "http://localhost:3000/predmeti/";
-    return request
-           .get(url)          
-           .then((data)=>{
-               return JSON.parse(data.text);
-           })
-}
-
-function* callgetSelected ({resolve,reject}) {
+/*function* callgetSelected ({id,resolve,reject}) {
     console.log("DESILA SE FETCH SELECTED, ovde je fetch_selected_done");
-    let result = yield call(getSelected);
+    let result = yield call(getSelected, id); 
     console.log(result);
     
     if(result) {
-        yield put({type:'FETCH_SELECTED_DONE',result});
+        yield put({type:'FETCH_SELECTED_DONE', result});
         yield call(resolve);
     }
     else {
@@ -62,13 +40,12 @@ function* callgetSelected ({resolve,reject}) {
 
 function* getSelectedSaga() {
     console.log("usao u get selected saga, ona ceka fetch_selected akciju");
-    yield* takeLatest(FETCH_SELECTED, callgetSelected);
-}
-
+    yield* takeEvery(FETCH_SELECTED, callgetSelected);
+}*/
 //////////////////
 export default function* root() {
-    yield [
+    yield all([
         fork(getCoursesSaga),
-        fork(getSelectedSaga)
-    ]
+        //fork(getSelectedSaga)
+    ])
 }

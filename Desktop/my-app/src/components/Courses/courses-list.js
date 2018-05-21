@@ -7,9 +7,13 @@ import './kursevi.stil.css';
 
 class CourseList extends Component {
    
-    componentDidMount() {
-        this.props.prikazi();
-    }
+    constructor(props){
+        super(props);
+        this.state = {
+            courses: null
+        }
+    }   
+ 
       
     render() {
         return (                 
@@ -32,8 +36,9 @@ class CourseList extends Component {
                
                 <div key={course.id} className="divKurs">  
                 <span onClick= {()=> {                    
-                    this.props.selektuj(course)}}> 
+                    this.props.selektuj(course.id)}}> 
                     {course.ime}</span>
+                    <p className="txt-stil">rating: {course.rating}</p>
                 </div>
               
             )
@@ -47,10 +52,10 @@ function mapStateToProps(state) {
         }
     }
     
+    
    function mapDispatchToProps(dispatch) {
         return bindActionCreators ({
-        selektuj: selectCourse,
-        prikazi: showCourses 
+        selektuj: selectCourse       
         },dispatch)
     }
       

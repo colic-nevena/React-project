@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import Navlink from './navlink';
 import DropDown from './dropdown';
@@ -20,7 +22,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item"><Navlink to='/'>Početna</Navlink></li>             
              
-              <li className="nav-item"><Navlink to='/kursevi'>Kursevi</Navlink></li>                    
+              <li className="nav-item"><Navlink to='/kursevi'><span onClick={()=>this.props.prikazi()}>Kursevi</span></Navlink></li>                    
             </ul>
             
             
@@ -41,5 +43,11 @@ class Navbar extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators ({  
+  prikazi: showCourses 
+  },dispatch)
+}
 
-export default Navbar;
+
+export default connect(null,mapDispatchToProps)(Navbar);
