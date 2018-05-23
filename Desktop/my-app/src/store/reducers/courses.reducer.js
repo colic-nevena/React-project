@@ -4,7 +4,7 @@ import { showCourses } from "../actions";
     switch(action.type) {        
         case 'FETCH_COURSES_DONE':{
          //console.log("usao u showCoursesReducer i fetch done");
-         return action.result;
+         return action.payload;
         }
          default:
           return state;

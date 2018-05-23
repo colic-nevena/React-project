@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 import showCoursesReducer from './courses.reducer';
-import activeCourseReducer from './active-course.reducer';
+import { showTeachers } from '../actions';
+import showTeachersReducer from './teachers.reducer';
+
 
 
 const rootReducer = combineReducers({
     courses: showCoursesReducer,
-    activeCourse: activeCourseReducer
+    teachers: showTeachersReducer
 });
 
 export default rootReducer;

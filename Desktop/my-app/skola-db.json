@@ -3,7 +3,7 @@
     {
       "id": 1,
       "licno_ime": "Nenad Jović",
-      "rating": 4.91,
+      "rating": 4.38,
       "kursevi": [
         "matis",
         "hemija",
@@ -57,7 +57,7 @@
     {
       "id": 3,
       "licno_ime": "Helena Milić",
-      "rating": 4.89,
+      "rating": 4.24,
       "kursevi": [
         "engleski",
         "nemacki",
@@ -105,9 +105,57 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "licno_ime": "Marija Stošić",
-      "rating": 4.6,
+      "rating": 4.9,
+      "kursevi": [
+        "hemija",
+        "fizika",
+        "nemacki"
+      ],
+      "dani": [
+        "pon",
+        "sre",
+        "cet",
+        "sub"
+      ],
+      "sati": [
+        9,
+        10,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "id": 6,
+      "licno_ime": "Ana Petrova",
+      "rating": 4.3,
+      "kursevi": [
+        "hemija",
+        "fizika",
+        "nemacki"
+      ],
+      "dani": [
+        "pon",
+        "sre",
+        "cet",
+        "sub"
+      ],
+      "sati": [
+        9,
+        10,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "id": 7,
+      "licno_ime": "Marko Đokić",
+      "rating": 4.89,
       "kursevi": [
         "hemija",
         "fizika",
@@ -134,7 +182,7 @@
       "id": 1,
       "ime": "Matematika",
       "rating": 5,
-      "mesta_na_kursu": 2,
+      "mesta_na_kursu": 4,
       "science": true,
       "zabrana_rez": false,
       "dani": [
@@ -319,7 +367,7 @@
       "id": 9,
       "ime": "Švedski",
       "rating": 4.5,
-      "mesta_na_kursu": 1,
+      "mesta_na_kursu": 3,
       "science": false,
       "zabrana_rez": false,
       "dani": [

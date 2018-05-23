@@ -1,4 +1,4 @@
-.divKurs {
+.divKursSc {
     width:200px;
     height: 100px;
     font-weight: bold;
@@ -10,6 +10,35 @@
     background-color:#669999;
     margin:5% 2% 0 5%;
   }
+
+  
+  .divKurs {
+    width:200px;
+    height: 100px;
+    font-weight: bold;
+    font-size: 20px;  
+    text-align: center;
+    vertical-align: middle;    
+    border:2px solid black;
+    float:left;
+    background-color:#669999;
+    margin:5% 2% 0 5%;
+  }
+  
+  .divKursLang {
+    width:200px;
+    height: 100px;
+    font-weight: bold;
+    font-size: 20px;  
+    text-align: center;
+    vertical-align: middle;    
+    border:2px solid black;
+    float:left;
+    background-color:#4d648d;
+    margin:5% 2% 0 5%;
+  }
+  
+  
   .txt-stil {
     font-size: 14px;  
       font-weight: normal;
@@ -22,5 +51,21 @@
 
 .kContainer {
     background-color: #A9C7C7;
-    height: 550px;
+    height: 590px;
 }
+
+
+.nContainer {
+    background-color: #A9C7C7;
+    height: 590px;
+    position:relative;
+}
+
+
+
+.btnNajbolji {
+    position: absolute;
+    bottom:0%;
+    left: 5%;
+}
+

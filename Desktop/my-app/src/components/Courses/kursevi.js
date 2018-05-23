@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CourseList from './courses-list';
 import './kursevi.stil.css'
-import CourseDetails from './active-course'
+
 
 class Kursevi extends Component {
     render() {
@@ -11,7 +11,7 @@ class Kursevi extends Component {
             <h2 id="naslov">Kursevi u Camelot dvorcu znanja</h2>
             
             <CourseList></CourseList>
-            <CourseDetails></CourseDetails>
+            
             
             </div>
             

@@ -1,24 +1,19 @@
 import {takeEvery, takeLatest} from 'redux-saga';
 import {fork,call,put, all} from 'redux-saga/effects';
 import request from 'superagent';
-import {FETCH_COURSES, FETCH_SELECTED, FETCH_DELETE} from '../store/actions'
-import {getCourses, getSelected, deleteStudent, getStudentByEmail} from '../services/db-school.service';
+import { FETCH_COURSES, FETCH_DELETE, FETCH_ADD, FETCH_TEACHERS, FETCH_BEST_TEACHERS } from '../store/actions'
+import {getCourses, getSelected, deleteStudent, getStudentByEmail, getCourseByName, updateCourse, addStudent, getStudents, getTeachers} from '../services/db-school.service';
 
 
-function* callgetCourses ({resolve,reject}) {  
-    let result = yield call(getCourses, null);
-      
-    if(result) {
-        yield put({type:'FETCH_COURSES_DONE',result});
-        yield call(resolve,null);
-    }
-    else {
-        yield call(reject,null);
-    }    
+function* callgetCourses () {  
+    let kursevi = yield call(getCourses);      
+  
+        yield put({type:'FETCH_COURSES_DONE', payload: kursevi});
+   
 }   
 
 function* getCoursesSaga() {   
-    yield* takeEvery(FETCH_COURSES, callgetCourses);
+    yield takeLatest(FETCH_COURSES, callgetCourses);
 }
 
 
@@ -28,41 +23,125 @@ function* getCoursesSaga() {
 
 function* callgetDelete({payload}) {  
     console.log("usao u callgetDelete, sad ce fetch done: " + payload);  
-    let result = yield call(getStudentByEmail, payload);
-    let finalResult = yield call(deleteStudent, result[0].id); 
+    let studMejl = yield call(getStudentByEmail, payload);//on vrati studenta po mejlu, kao niz        
+    
+    let kursZaUpdate = studMejl[0].kurs;
+    console.log("KURS ZA UPDATE JE: " + kursZaUpdate);
+    //vrati kurs po imenu: kursZaUpdate
+    let res = yield call(getCourseByName, kursZaUpdate);//ovde je vracen kurs po imenu
+    res[0].mesta_na_kursu++;
+    console.log("MESTA IMA: " + res[0].mesta_na_kursu);
+    const novi = {
+        "id": res[0].id,
+        "ime": res[0].ime,
+        "rating": res[0].rating,
+        "mesta_na_kursu": res[0].mesta_na_kursu,
+        "science": res[0].science,
+        "zabrana_rez": res[0].zabrana_rez,
+        "dani": res[0].dani,
+        "sati": res[0].sati
+    };
+    
+    let finalRes = yield call(updateCourse,res[0].id,novi);    
+    
+    let forDelete= yield call(deleteStudent, studMejl[0].id); //obrises studenta kog je vratio
+    alert("Uspešno ste se ispisali iz škole.");
+    
+    
 }   
-
-
 
 function* getDeleteSaga() { 
     console.log("usao u getDelete saga, ceka fetch delete");  
-    yield* takeEvery(FETCH_DELETE, callgetDelete);
+    yield* takeLatest(FETCH_DELETE, callgetDelete);
 }
 
-////////////////////
-/*function* callgetSelected ({id,resolve,reject}) {
-    console.log("DESILA SE FETCH SELECTED, ovde je fetch_selected_done");
-    let result = yield call(getSelected, id); 
-    console.log(result);
+
+
+
+
+
+
+///////////
+
+function* callAddStudent({payload,name,lastname,course}) {
+    console.log("usaooooo u callAddStudent");  
+    let niz = yield call(getStudents, null);   
+    let duz = niz.length;
+    console.log("duzina niza je: " + duz);
+    let noviID = duz+1;
+    console.log("a novi id je: " + noviID);
     
-    if(result) {
-        yield put({type:'FETCH_SELECTED_DONE', result});
-        yield call(resolve);
-    }
-    else {
-        yield call(reject, 'No course at the moment');
-    }    
+    const noviS = {
+        "id": noviID,
+        "ime": name,
+        "prezime": lastname,
+        "kurs": course,
+        "email": payload
+      };
+      
+    console.log("NOVI STUDENT: " + noviS.id, + " " + noviS.ime);      
+    
+    let dodaj = yield call(addStudent, noviS);    
+    alert("Uspešno Ste se upisali u našu školu. Dobrodošli!");
+     
+}   
+
+function* addNewStudentSaga() {   
+    console.log("slusam za fetch add, u addNewStudentSaga sam");
+    yield* takeLatest(FETCH_ADD, callAddStudent);
 }
 
-function* getSelectedSaga() {
-    console.log("usao u get selected saga, ona ceka fetch_selected akciju");
-    yield* takeEvery(FETCH_SELECTED, callgetSelected);
-}*/
-//////////////////
+
+
+
+
+
+
+
+//////////////
+
+function* callgetTeachers() {  
+    let nastavnici = yield call(getTeachers);      
+  
+    yield put({type:'FETCH_TEACHERS_DONE', payload: nastavnici});
+    
+}   
+
+function* getTeachersSaga() {   
+    yield takeLatest(FETCH_TEACHERS, callgetTeachers);
+}
+
+
+
+
+
+//////////////
+
+function* callgetBestTeachers() {  
+    let najbolji = yield call(getTeachers);      
+  
+    yield put({type:'FETCH_BEST_TEACHERS_DONE', payload: najbolji});
+    
+}   
+
+function* getBestTeachersSaga() {   
+    yield takeLatest(FETCH_BEST_TEACHERS, callgetBestTeachers);
+}
+
+
+
+
+
+
+
+/////////////
+
 export default function* root() {
     yield all([
-        fork(getCoursesSaga),
+        fork(addNewStudentSaga),
+        fork(getTeachersSaga),
+        fork(getCoursesSaga), 
+        fork(getBestTeachersSaga),       
         fork(getDeleteSaga)
-        //fork(getSelectedSaga)
     ])
 }

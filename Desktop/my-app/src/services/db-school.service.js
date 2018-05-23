@@ -1,20 +1,36 @@
-export function getCourses() {
-    //console.log("usao u get courses, ovde zove api");
-    /*const url = "http://localhost:3000/predmeti/";
-    return request
-           .get(url)
-           .then((data)=>{
-               return JSON.parse(data.text);
-           })*/
-           
+export function getCourses() {              
  return fetch('http://localhost:3000/predmeti')
        .then(response=>response.json())
 }
 
 
 
+
+export function getStudents() {              
+    return fetch('http://localhost:3000/prijavljeni')
+          .then(response=>response.json())
+}
+   
+   
+   
+   
+   
+export function getTeachers() {              
+    return fetch('http://localhost:3000/nastavnici')
+          .then(response=>response.json())
+   }
+   
+
+
 export function getStudentByEmail(email) {
     return fetch(`http://localhost:3000/prijavljeni/?email=${email}`)
+                .then( response => response.json());
+}
+
+
+
+export function getCourseByName(ime) {
+    return fetch(`http://localhost:3000/predmeti/?ime=${ime}`)
                 .then( response => response.json());
 }
 
@@ -38,11 +54,9 @@ export function deleteStudent(id) {
 
 
 
-
-
 export function updateCourse(id, data) {
-    return fetch(`http://localhost:3000/kursevi/${id}`, {
-        method: 'put',
+    return fetch(`http://localhost:3000/predmeti/${id}`, {
+        method: 'PUT',
         headers: {
             'Accept': 'application/json,text/plain',
             'Content-Type': 'application/json'
@@ -50,8 +64,7 @@ export function updateCourse(id, data) {
 
         body: JSON.stringify(data)
     }).then(res => res.json())
-    .then(res => console.log("Resolve: " + res))
-    .catch(err => console.log("Error: " + err)); 
+   
 }
 
 
@@ -59,7 +72,7 @@ export function updateCourse(id, data) {
 
 export function addStudent(data) {
     return fetch('http://localhost:3000/prijavljeni', {
-        method: 'post',
+        method: 'POST',
         headers: {
             'Accept': 'application/json,text/plain',
             'Content-Type': 'application/json'
@@ -67,6 +80,5 @@ export function addStudent(data) {
 
         body: JSON.stringify(data)
     }).then(res => res.json())
-    .then(res => console.log("Resolve: " + res))
-    .catch(err => console.log("Error: " + err)); 
+     
 }
