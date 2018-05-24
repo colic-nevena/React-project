@@ -31,7 +31,7 @@ class CourseList extends Component {
        
         return this.props.courses.map(course => {
             return (               
-                <div key={course.id}  className={(course.science === true) ? "divKursSc" : "divKursLang"}><span onClick={()=>this.props.selektuj(course.id)}>{course.ime}</span> 
+                <div key={course.id}  onClick={()=>this.props.selektuj(course.id)} className={(course.science === true) ? "divKursSc" : "divKursLang"}>{course.ime}
                    
                     <p className="txt-stil">rating: {course.rating}</p>                    
                     <p className="txt-stil">slobodnih mesta: {course.mesta_na_kursu}</p>
