@@ -19,9 +19,15 @@ input[type=text], input[type=password] {
   }
   
   
+  
+  
+  
   .selekt-div {
     margin-bottom:5%;
   }
+  
+  
+  
   
   
   .prijavibtn{    
@@ -29,17 +35,27 @@ input[type=text], input[type=password] {
     margin:auto;
   }
   
+  
+  
+  
   .desno {
     float: left;
     padding:1%;
     margin-right: 2%;
   }
   
+  
+  
+  
+  
 .container4 {  
     margin:0 36%;
     width:40%;  
   
   }
+  
+  
+  
     
   .stilNaslov {
     display: block;
@@ -48,11 +64,16 @@ input[type=text], input[type=password] {
     
   }
   
+  
+  
+  
   .clearfix::after {
     content: "";
     clear: both;
     display: table;
   }
+  
+  
   
   @media screen and (max-width: 640px) {
     .prijavibtn {

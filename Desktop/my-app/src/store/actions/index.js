@@ -6,6 +6,7 @@ export const FETCH_COURSES = 'FETCH_COURSES';
 export const FETCH_DELETE = 'FETCH_DELETE';
 export const FETCH_ADD = 'FETCH_ADD';
 export const FETCH_TEACHERS = 'FETCH_TEACHERS';
+export const FETCH_BY_DAY = 'FETCH_BY_DAY';
 export const FETCH_BEST_TEACHERS = 'FETCH_BEST_TEACHERS';
 
 export function showCourses(dispatch) {
@@ -27,8 +28,15 @@ export function showTeachers(dispatch) {
 export function showBestTeachers(dispatch) {
     console.log("usao u show BEST TEACHERS");
     return {
-        type: FETCH_BEST_TEACHERS,
-       
+        type: FETCH_BEST_TEACHERS,       
+    }
+}
+
+export function selectByDay(day) {
+    console.log("usao u show BEST TEACHERS i dan je " + day);
+    return {
+        type: FETCH_BY_DAY,
+        dan: day       
     }
 }
 
@@ -55,3 +63,7 @@ export function dodajStudenta(mail,ime,prezime,kurs) {
         
     }  
 }
+
+
+
+

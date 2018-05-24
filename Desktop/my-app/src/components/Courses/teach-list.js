@@ -31,10 +31,11 @@ class TeachList extends Component {
        
         return this.props.teachers.map(teach => {
             return (               
+               
                 <div key={teach.id} className="divKurs">  {teach.licno_ime}  
-                    <hr/>             
-                    <p className="txt-stil">rating: {teach.rating}</p>
                     
+                    <p className="txt-stil2">rating: {teach.rating}</p>
+                    <p className="txt-stil"> {teach.kursevi + " "}</p>
                     
                 </div>
               

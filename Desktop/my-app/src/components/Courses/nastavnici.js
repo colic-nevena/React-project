@@ -13,8 +13,10 @@ class Nastavnici extends Component {
             <div className="nContainer">
             <h2 id="naslov">Nastavnici u Camelot dvorcu znanja</h2>
             
+            <div className="nast">
             <TeachList></TeachList>
-           
+            </div>
+            
             <button className="btn btn-secondary btnNajbolji" onClick={()=>this.props.prikaziNajNastavnike()}>Prikaži najbolje</button>
             
             </div>

@@ -39,33 +39,65 @@
   }
   
   
-  .txt-stil {
+.txt-stil {
     font-size: 14px;  
-      font-weight: normal;
-  }
+    font-weight: normal;
+}
+
+.txt-stil2 {
+    font-size: 14px;  
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+
   
 #naslov {
     display: block;
     margin:0 20%;
 }
 
+
 .kContainer {
     background-color: #A9C7C7;
     height: 590px;
+    margin:auto;
+    display: block;
 }
 
 
 .nContainer {
     background-color: #A9C7C7;
+    margin:auto;
+    display: block;
     height: 590px;
+    width:90%;
     position:relative;
 }
 
-
+.nast{
+   margin-left: 8%;
+}
 
 .btnNajbolji {
     position: absolute;
     bottom:0%;
-    left: 5%;
+    left: 13%;
 }
 
+
+.sel {
+    right:11%;
+    position: absolute;
+    top:20%;
+}
+
+
+@media screen and (max-width: 1500px) {
+    .sel {
+        right:10%;
+        position: absolute;
+        top:18%;
+    }
+    
+  }

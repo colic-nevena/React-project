@@ -1,22 +1,37 @@
 import {takeEvery, takeLatest} from 'redux-saga';
 import {fork,call,put, all} from 'redux-saga/effects';
 import request from 'superagent';
-import { FETCH_COURSES, FETCH_DELETE, FETCH_ADD, FETCH_TEACHERS, FETCH_BEST_TEACHERS } from '../store/actions'
+import { FETCH_COURSES, FETCH_DELETE, FETCH_ADD, FETCH_TEACHERS, FETCH_BEST_TEACHERS, FETCH_BY_DAY } from '../store/actions'
 import {getCourses, getSelected, deleteStudent, getStudentByEmail, getCourseByName, updateCourse, addStudent, getStudents, getTeachers} from '../services/db-school.service';
 
 
 function* callgetCourses () {  
     let kursevi = yield call(getCourses);      
-  
-        yield put({type:'FETCH_COURSES_DONE', payload: kursevi});
-   
+    
+    yield put({type:'FETCH_COURSES_DONE', payload: kursevi});   
 }   
 
+
 function* getCoursesSaga() {   
+   
     yield takeLatest(FETCH_COURSES, callgetCourses);
 }
 
 
+///////////////
+
+function* callgetCoursesByDay ({dan}) {  
+    let kursevi = yield call(getCourses);      
+    console.log("usao u callGetCoursesByDay");
+    console.log("DAN U SAGI JE: " + dan);
+    
+    yield put({type:'FETCH_BY_DAY_DONE', payload: kursevi, dan: dan});   
+}   
+
+function* getByDaySaga() {   
+    console.log("usao u getCoursesByDay sagu");
+    yield takeLatest(FETCH_BY_DAY, callgetCoursesByDay);
+}
 
 ////////////////
 
@@ -168,7 +183,8 @@ export default function* root() {
         fork(addNewStudentSaga),
         fork(getTeachersSaga),
         fork(getCoursesSaga), 
-        fork(getBestTeachersSaga),       
+        fork(getBestTeachersSaga), 
+        fork(getByDaySaga),   
         fork(getDeleteSaga)
     ])
 }
