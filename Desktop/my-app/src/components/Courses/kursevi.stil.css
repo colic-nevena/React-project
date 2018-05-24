@@ -50,6 +50,11 @@
     text-decoration: underline;
 }
 
+.txt-stil3 {
+    font-size: 14px;  
+    font-weight: bold;
+ 
+}
 
   
 #naslov {
@@ -57,12 +62,35 @@
     margin:0 20%;
 }
 
+.selKurs {
+    position: absolute;
+    top:30%;
+    right: 0%;
+    border:1px solid black;
+    border-radius: 2%;
+    background-color:grey;
+}
+
+
+.info {
+    left:14%;
+    top:19%;
+    position: absolute;
+    font-style: italic;
+}
 
 .kContainer {
+    background-color: #A9C7C7;    
+    position: absolute;
+    left:0%;   
+    width:85%;
+}
+
+.donjiDeo {
     background-color: #A9C7C7;
-    height: 590px;
-    margin:auto;
-    display: block;
+    position:relative;  
+    height:580px;
+ 
 }
 
 
@@ -86,18 +114,102 @@
 }
 
 
-.sel {
-    right:11%;
-    position: absolute;
-    top:20%;
+
+@media screen and (max-width: 1500px) {
+    
+    .sel {
+        right:0%;
+        position: absolute;
+        top:15%;
+    }        
+  }
+  
+@media screen and (max-width: 1210px) {
+    .selKurs {
+        position: absolute;
+        top:30%;
+        right: 0%;
+        border:1px solid black;
+        border-radius: 2%;
+        background-color:grey;
+    }
+    
+    .sel {
+        right:0%;
+        position: absolute;
+        top:15%;
+    }
+    
+    .divKursSc {
+        width:34%;
+        height: 100px;
+        font-weight: bold;
+        font-size: 20px;  
+        text-align: center;
+        vertical-align: middle;    
+        border:2px solid black;
+        float:left;
+        background-color:#669999;
+        margin:5% 2% 0 5%;
+      }
+      
+      .divKursLang {
+        width:34%;
+        height: 100px;
+        font-weight: bold;
+        font-size: 20px;  
+        text-align: center;
+        vertical-align: middle;    
+        border:2px solid black;
+        float:left;
+        background-color:#4d648d;
+        margin:5% 2% 0 5%;
+      }
+    
 }
 
 
-@media screen and (max-width: 1500px) {
-    .sel {
-        right:10%;
+
+@media screen and (max-width: 840px) {
+    .selKurs {
         position: absolute;
-        top:18%;
+        top:30%;
+        right: 0%;
+        border:1px solid black;
+        border-radius: 2%;
+        background-color:grey;
     }
     
-  }
+    .sel {
+        right:0%;
+        position: absolute;
+        top:15%;
+    }
+    
+    .divKursSc {
+        width:55%;
+        height: 100px;
+        font-weight: bold;
+        font-size: 20px;  
+        text-align: center;
+        vertical-align: middle;    
+        border:2px solid black;
+        float:left;
+        background-color:#669999;
+        margin:5% 2% 0 5%;
+      }
+      
+      .divKursLang {
+        width:55%;
+        height: 100px;
+        font-weight: bold;
+        font-size: 20px;  
+        text-align: center;
+        vertical-align: middle;    
+        border:2px solid black;
+        float:left;
+        background-color:#4d648d;
+        margin:5% 2% 0 5%;
+      }
+    
+}

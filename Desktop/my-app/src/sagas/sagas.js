@@ -1,19 +1,17 @@
 import {takeEvery, takeLatest} from 'redux-saga';
 import {fork,call,put, all} from 'redux-saga/effects';
 import request from 'superagent';
-import { FETCH_COURSES, FETCH_DELETE, FETCH_ADD, FETCH_TEACHERS, FETCH_BEST_TEACHERS, FETCH_BY_DAY } from '../store/actions'
+import { FETCH_COURSES, FETCH_DELETE, FETCH_ADD, FETCH_TEACHERS, FETCH_BEST_TEACHERS, FETCH_BY_DAY, FETCH_SELECTED } from '../store/actions'
 import {getCourses, getSelected, deleteStudent, getStudentByEmail, getCourseByName, updateCourse, addStudent, getStudents, getTeachers} from '../services/db-school.service';
 
 
 function* callgetCourses () {  
-    let kursevi = yield call(getCourses);      
-    
+    let kursevi = yield call(getCourses);          
     yield put({type:'FETCH_COURSES_DONE', payload: kursevi});   
 }   
 
 
-function* getCoursesSaga() {   
-   
+function* getCoursesSaga() { 
     yield takeLatest(FETCH_COURSES, callgetCourses);
 }
 
@@ -71,8 +69,19 @@ function* getDeleteSaga() {
 }
 
 
+///////////
+
+function* callgetSelectedCourse ({payload}) {  
+    console.log(`SAGA ZA SELEKTOVAN, ID JE: ${payload}`);
+    let kurs = yield call(getSelected, payload);
+              
+    yield put({type:'FETCH_SELECTED_DONE', payload: kurs});   
+}   
 
 
+function* getSelectedSaga() { 
+    yield takeLatest(FETCH_SELECTED, callgetSelectedCourse);
+}
 
 
 
@@ -185,6 +194,7 @@ export default function* root() {
         fork(getCoursesSaga), 
         fork(getBestTeachersSaga), 
         fork(getByDaySaga),   
-        fork(getDeleteSaga)
+        fork(getDeleteSaga),
+        fork(getSelectedSaga)
     ])
 }

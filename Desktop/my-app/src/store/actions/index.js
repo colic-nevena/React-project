@@ -8,6 +8,11 @@ export const FETCH_ADD = 'FETCH_ADD';
 export const FETCH_TEACHERS = 'FETCH_TEACHERS';
 export const FETCH_BY_DAY = 'FETCH_BY_DAY';
 export const FETCH_BEST_TEACHERS = 'FETCH_BEST_TEACHERS';
+export const FETCH_SELECTED = 'FETCH_SELECTED';
+
+
+
+
 
 export function showCourses(dispatch) {
     console.log("usao u showCourses");
@@ -64,6 +69,13 @@ export function dodajStudenta(mail,ime,prezime,kurs) {
     }  
 }
 
+
+export function selectCourse(course) {
+    return {
+        type: FETCH_SELECTED,
+        payload: course   
+    }
+}
 
 
 

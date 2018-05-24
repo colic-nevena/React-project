@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CourseList from './courses-list';
+import CourseDetails from './active-course'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectByDay } from '../../store/actions';
@@ -26,11 +27,12 @@ class Kursevi extends Component {
         
         return(            
            
-            <div className="kContainer">
+            <div className="donjiDeo">
             <h2 id="naslov">Kursevi u Camelot dvorcu znanja</h2>
             
+            <div className="kContainer">
             <CourseList></CourseList>
-            
+            </div>
            
             <select className='form-control col-sm-2 sel' ref='_select' onChange={this.handleChange.bind(this)}>
                     <option value="null" disabled selected>Izaberi dan</option>
@@ -39,8 +41,12 @@ class Kursevi extends Component {
                     return <option key={index} value = {day.naziv}>{day.naziv}</option>
                     })}
                     
-            </select>           
-            </div>         
+            </select> 
+            
+            <CourseDetails></CourseDetails>          
+                  
+            
+            </div>   
             
         )
     }

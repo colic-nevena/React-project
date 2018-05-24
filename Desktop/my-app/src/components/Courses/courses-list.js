@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { showCourses} from "../../store/actions";
+import { showCourses, selectCourse} from "../../store/actions";
 import './kursevi.stil.css';
 
 
@@ -31,7 +31,7 @@ class CourseList extends Component {
        
         return this.props.courses.map(course => {
             return (               
-                <div key={course.id}  className={(course.science === true) ? "divKursSc" : "divKursLang"}> {course.ime} 
+                <div key={course.id}  className={(course.science === true) ? "divKursSc" : "divKursLang"}><span onClick={()=>this.props.selektuj(course.id)}>{course.ime}</span> 
                    
                     <p className="txt-stil">rating: {course.rating}</p>                    
                     <p className="txt-stil">slobodnih mesta: {course.mesta_na_kursu}</p>
@@ -48,5 +48,10 @@ function mapStateToProps(state) {
         }
     }    
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators ({
+        selektuj: selectCourse
+    },dispatch)
+}
     
-export default connect(mapStateToProps)(CourseList)
+export default connect(mapStateToProps,mapDispatchToProps)(CourseList)
