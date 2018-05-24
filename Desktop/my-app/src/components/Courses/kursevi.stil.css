@@ -5,25 +5,22 @@
     font-size: 20px;  
     text-align: center;
     vertical-align: middle;    
-    border:2px solid black;
+    border:1px solid black;
     float:left;
     background-color:#669999;
     margin:5% 2% 0 5%;
   }
 
-  
-  .divKurs {
-    width:200px;
-    height: 100px;
-    font-weight: bold;
-    font-size: 20px;  
-    text-align: center;
-    vertical-align: middle;    
-    border:2px solid black;
-    float:left;
-    background-color:#669999;
-    margin:5% 2% 0 5%;
+  .divKursSc:hover {
+      opacity: 0.8;
+      border:2.5px solid black;
   }
+  
+  .divKursLang:hover {
+    opacity: 0.8;
+    border:2px solid black;
+}
+
   
   .divKursLang {
     width:200px;
@@ -32,7 +29,7 @@
     font-size: 20px;  
     text-align: center;
     vertical-align: middle;    
-    border:2px solid black;
+    border:1px solid black;
     float:left;
     background-color:#4d648d;
     margin:5% 2% 0 5%;
@@ -73,8 +70,8 @@
 
 
 .info {
-    left:14%;
-    top:19%;
+    left:4%;
+    top:9%;
     position: absolute;
     font-style: italic;
 }
@@ -89,7 +86,7 @@
 .donjiDeo {
     background-color: #A9C7C7;
     position:relative;  
-    height:580px;
+    height:570px;
  
 }
 
@@ -98,7 +95,7 @@
     background-color: #A9C7C7;
     margin:auto;
     display: block;
-    height: 590px;
+    height: 570px;
     width:90%;
     position:relative;
 }
