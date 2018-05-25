@@ -20,7 +20,18 @@
     opacity: 0.8;
     border:2px solid black;
 }
-
+.divTeach {
+    width:200px;
+    height: 100px;
+    font-weight: bold;
+    font-size: 20px;  
+    text-align: center;
+    vertical-align: middle;    
+    border:1px solid black;
+    float:left;
+    background-color:#669999;
+    margin:5% 2% 0 5%;
+}
   
   .divKursLang {
     width:200px;
